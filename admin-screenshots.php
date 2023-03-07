@@ -7,9 +7,9 @@
  * @wordpress-plugin
  * Plugin Name: Admin Screenshots
  * Plugin URI: https://wordpress.org/plugins/admin-screenshots
- * Description: Adds a button to the admin Dashboard that allows for taking screenshots (and sharing them) easily.
+ * Description: The easiest way to share a screenshot of any of your site's settings pages, without giving anyone direct access to your dashboard.
  * Author: Senff
- * Version: 0.8
+ * Version: 1.0
  * Author URI: https://www.senff.com/
  * Text Domain: admin-screenshots
  */
@@ -23,8 +23,8 @@ if (!function_exists('admin_screenshots_styles')) {
         wp_register_style('adminScreenshotsStyle', plugins_url('/assets/css/admin-screenshots.css', __FILE__) );
         wp_enqueue_style('adminScreenshotsStyle');  
 
-        wp_register_script('html2canvas-library', 'https://html2canvas.hertzen.com/dist/html2canvas.min.js', array(), '1.0.0', true );
-        wp_enqueue_script('html2canvas-library');
+        wp_register_script('admin-screenshots-library', plugin_dir_url( __FILE__ ) . 'assets/js/html2canvas.min.js', array( 'jquery' ), '1.0.0', true );
+        wp_enqueue_script('admin-screenshots-library');
 
         wp_register_script('admin-screenshots-script', plugin_dir_url( __FILE__ ) . 'assets/js/admin-screenshots.js', array( 'jquery' ), '1.0.0', true );
         wp_enqueue_script('admin-screenshots-script');

@@ -5,12 +5,18 @@
 #wpadminbar ul#wp-admin-bar-root-default>li#wp-admin-bar-admin-screenshots-button a {
 	background: #2c3338;
     color: #72aee6;
-    font-weight: bold;
+    font-weight: bold;  
+    background-image:url('../images/shot-1.png');
+    background-size: 20px auto;
+    background-repeat: no-repeat;
+    background-position:5px center;
+    padding-left: 30px;  
 }
 
 #wpadminbar ul#wp-admin-bar-root-default>li#wp-admin-bar-admin-screenshots-button a:hover {
 	color: #2c3338;
-    background: #72aee6;	
+    background-color: #72aee6;	
+    background-image:url('../images/shot-2.png');    
 }
 
 #admin-screenshots-overlay {
