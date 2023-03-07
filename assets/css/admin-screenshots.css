@@ -1,0 +1,48 @@
+#wpadminbar ul#wp-admin-bar-root-default>li#wp-admin-bar-admin-screenshots-button {
+    margin-left: 10px;
+}
+
+#wpadminbar ul#wp-admin-bar-root-default>li#wp-admin-bar-admin-screenshots-button a {
+	background: #2c3338;
+    color: #72aee6;
+    font-weight: bold;
+}
+
+#wpadminbar ul#wp-admin-bar-root-default>li#wp-admin-bar-admin-screenshots-button a:hover {
+	color: #2c3338;
+    background: #72aee6;	
+}
+
+#admin-screenshots-overlay {
+	position: fixed;
+	left:0;
+	top:0;
+	width: 100%;
+	height: 100%;
+	z-index:99999;
+	background:rgba(0,0,0,0.5);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+#admin-screenshots-popup {
+	border-radius: 10px;
+	padding: 10px;
+	font-size: 16px;
+	width: 600px;
+	background: #ffffff;
+	border: solid 4px #2271b1;
+	text-align: center;
+	box-shadow: 0 0 20px #444444;
+}
+
+#admin-screenshots-popup a {
+	display:block;
+	font-weight: bold;
+	margin-top: 10px;
+}
+
+#admin-screenshots-popup button {
+	margin: 10px 20px 20px 20px;
+	display: inline-block;
+}
