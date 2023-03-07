@@ -1,6 +1,6 @@
 # Admin Screenshot
 * Contributors: senff
-* Donate link: http://paypal.senff.com
+* Donate link: https://donate.senff.com
 * Tags: screenshot, share, debug, admin
 * Plugin URI: http://www.senff.com
 * Requires at least: 5.0
