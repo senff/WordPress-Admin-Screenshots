@@ -63,8 +63,9 @@ It's very possible, or even likely, that something's not right; I can only do so
 
 ## Screenshots 
 
-1. Screenshot Button
-2. Popup with links
+![admin-screenshots-1](https://user-images.githubusercontent.com/1710669/223448408-0dd0e38c-74a0-4abc-823d-e7ba0b26ef5d.png)
+
+![admin-screenshots-2](https://user-images.githubusercontent.com/1710669/223448417-ddd5ed64-9090-48af-b72d-a4a97a22d314.png)
 
 
 ## Changelog
