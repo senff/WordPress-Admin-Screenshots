@@ -9,7 +9,7 @@
  * Plugin URI: https://wordpress.org/plugins/admin-screenshots
  * Description: The easiest way to share a screenshot of any of your site's settings pages, without giving anyone direct access to your dashboard.
  * Author: Senff
- * Version: 1.01
+ * Version: 1.0.2
  * Author URI: https://www.senff.com/
  * Text Domain: admin-screenshots
  */
