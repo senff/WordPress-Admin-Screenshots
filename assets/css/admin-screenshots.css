@@ -3,7 +3,6 @@
 }
 
 #wpadminbar ul#wp-admin-bar-root-default>li#wp-admin-bar-admin-screenshots-button a {
-	background: #2c3338;
     color: #72aee6;
     font-weight: bold;  
     background-image:url('../images/shot-1.png');
@@ -17,6 +16,13 @@
 	color: #2c3338;
     background-color: #72aee6;	
     background-image:url('../images/shot-2.png');    
+}
+
+#wpadminbar ul#wp-admin-bar-root-default>li#wp-admin-bar-admin-screenshots-button a.working,
+#wpadminbar ul#wp-admin-bar-root-default>li#wp-admin-bar-admin-screenshots-button a.working:hover {
+    color: #72aee6;
+    background-color: transparent;
+    background-image:url('../images/shot-1.png');
 }
 
 #admin-screenshots-overlay {
