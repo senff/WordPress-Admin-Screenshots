@@ -14,7 +14,6 @@
  * Text Domain: admin-screenshots
  */
 
-
 defined('ABSPATH') or die('INSERT COIN');
 
 /* --- ADD THE .CSS AND .JS TO ADMIN AREA -------------------------------------------------------------- */
