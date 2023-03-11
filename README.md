@@ -24,7 +24,6 @@ If you're on the other end (like a support agent) and you need to know how someo
 * **Saves screenshots in Media Library**: every image is saved in the /admin-screenshots/ subdirectory under /uploads.
 * **Gives you direct link to images**: immediately after taking the screenshot, you get the link to it, easy to copy to your clipboard and share with others.
 
-
 ### Installation 
 
 1. Upload the "admin-screenshot" directory to your "wp-content/plugins" directory.
@@ -33,7 +32,6 @@ If you're on the other end (like a support agent) and you need to know how someo
 4. Select the "TAKE SCREENSHOT" button.
 5. Copy the link to the screenshot and share it with anyone.
 6. Party!
-
 
 ### Frequently Asked Questions
 
@@ -60,13 +58,11 @@ Please go to the plugin's [WordPress.org support forum](https://wordpress.org/su
 ### I've noticed that something doesn't work right, or I have an idea for improvement. How can I report this? 
 It's very possible, or even likely, that something's not right; I can only do so much testing and it's impossible to test the plugin with every single setup out there, so there's a good chance that it will have some issues. Please report any bugs on the plugin's [WordPress.org support forum](https://wordpress.org/support/plugin/admin-screenshots).
 
-
 ## Screenshots 
 
 ![admin-screenshots-1](https://user-images.githubusercontent.com/1710669/223448408-0dd0e38c-74a0-4abc-823d-e7ba0b26ef5d.png)
 
 ![admin-screenshots-2](https://user-images.githubusercontent.com/1710669/223448417-ddd5ed64-9090-48af-b72d-a4a97a22d314.png)
-
 
 ## Changelog
 
@@ -75,7 +71,6 @@ It's very possible, or even likely, that something's not right; I can only do so
 
 = 1.0 =
 * First public release
-
 
 ## Upgrade Notice 
 
