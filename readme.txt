@@ -39,9 +39,8 @@ If you're on the other end (like a support agent) and you need to know how someo
 
 = Some images are not showing, and some of the styles seem to be a bit off in the screenshots, esp. form elements (input fields, dropdowns, etc.) =
 This is a known issue and is likely a bug in the original HTML2Canvas library that this plugin is built on. You can read a bit more about this library here: https://github.com/niklasvh/html2canvas
-Relevant examples: 
-https://github.com/niklasvh/html2canvas/issues/2958
-https://github.com/niklasvh/html2canvas/issues/2937
+
+Relevant examples: https://github.com/niklasvh/html2canvas/issues/2958 / https://github.com/niklasvh/html2canvas/issues/2937
 
 While the screenshots aren't perfect, they should be sufficient for most cases where you're just trying to share the settings on a page.
 
