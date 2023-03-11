@@ -5,7 +5,7 @@
 * Plugin URI: http://www.senff.com
 * Requires at least: 5.0
 * Tested up to: 6.1.1
-* Stable tag: 1.0.2
+* Stable tag: 1.0.3
 * License: GPLv3
 * License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -70,7 +70,7 @@ It's very possible, or even likely, that something's not right; I can only do so
 
 ## Changelog
 
-= 1.0.2 =
+= 1.0.3 =
 * Small bugfixes, typos, cleanup
 
 = 1.0 =
@@ -79,7 +79,7 @@ It's very possible, or even likely, that something's not right; I can only do so
 
 ## Upgrade Notice 
 
-= 1.0.2 =
+= 1.0.3 =
 * Pre-release fixes
 
 = 1.0 =
