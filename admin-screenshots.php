@@ -9,7 +9,7 @@
  * Plugin URI: https://wordpress.org/plugins/admin-screenshots
  * Description: The easiest way to share a screenshot of any of your site's settings pages, without giving anyone direct access to your dashboard.
  * Author: Senff
- * Version: 1.0.2
+ * Version: 1.0.3
  * Author URI: https://www.senff.com/
  * Text Domain: admin-screenshots
  */
@@ -45,8 +45,8 @@ add_action('wp_enqueue_scripts', 'admin_screenshots_front_styles' );
 
 /* --- ADD THE SCREENSHOT BUTTON TO THE TOOLBAR -------------------------------------------------------------- */
 
-if (!function_exists('add_as_toolbar_button')) {
-    function add_as_toolbar_button() {
+if (!function_exists('admin_screenshots_toolbar_button')) {
+    function admin_screenshots_toolbar_button() {
         global $wp_admin_bar;
 
         $args = array(
@@ -57,13 +57,13 @@ if (!function_exists('add_as_toolbar_button')) {
         $wp_admin_bar->add_node($args);
     }
 }
-add_action('admin_bar_menu', 'add_as_toolbar_button', 999);
+add_action('admin_bar_menu', 'admin_screenshots_toolbar_button', 999);
 
 
 
 /* --- THE FUNCTION THAT CREATES A CANVAS AND SAVES IT AS AN IMAGE -------------------------------------------------------------- */
-if (!function_exists('save_canvas')) {
-    function save_canvas() {
+if (!function_exists('admin_screenshots_save_canvas')) {
+    function admin_screenshots_save_canvas() {
         if ( isset( $_POST['image'] ) ) {
             
             $upload_dir = wp_upload_dir();              // Array
@@ -76,7 +76,7 @@ if (!function_exists('save_canvas')) {
                 wp_mkdir_p($upload_path);
             }
 
-            $image_data = $_POST['image'];
+            $image_data = sanitize_text_field($_POST['image']);
             $timestamp = time();
             $img = $timestamp . '.png';
             $file = $upload_path . '/' . $img;
@@ -94,14 +94,13 @@ if (!function_exists('save_canvas')) {
                 require_once( ABSPATH . 'wp-admin/includes/image.php' );
                 $attachment_data = wp_generate_attachment_metadata( $attachment_id, $file );
                 wp_update_attachment_metadata( $attachment_id, $attachment_data );
-                _e($upload_dir_url . ',' . $timestamp);  // Sending this to the JS function in screenshotThis()
+                echo $upload_dir_url . ',' . $timestamp;  // Sending this to the JS function in screenshotThis()
             } else {
-                _e('Failed to save image.');
+                _e('Failed to save image.', 'admin-screenshots');
             }
         }
         wp_die();
     }
 }
-add_action( 'wp_ajax_save_canvas', 'save_canvas' );
-add_action( 'wp_ajax_nopriv_save_canvas', 'save_canvas' );
-
+add_action( 'wp_ajax_save_canvas', 'admin_screenshots_save_canvas' );
+add_action( 'wp_ajax_nopriv_save_canvas', 'admin_screenshots_save_canvas' );
