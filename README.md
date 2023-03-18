@@ -33,7 +33,7 @@ If you're on the other end (like a support agent) and you need to know how someo
 5. Copy the link to the screenshot and share it with anyone.
 6. Party!
 
-### Frequently Asked Questions
+## Frequently Asked Questions
 
 ###  Some images are not showing, and some of the styles seem to be a bit off in the screenshots, esp. form elements (input fields, dropdowns, etc.)
 This is a known issue and is likely a bug in the original HTML2Canvas library that this plugin is built on. You can read a bit more about this library here: https://github.com/niklasvh/html2canvas
