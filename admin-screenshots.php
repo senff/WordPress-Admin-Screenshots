@@ -9,23 +9,27 @@
  * Plugin URI: https://wordpress.org/plugins/admin-screenshots
  * Description: The easiest way to share a screenshot of any of your site's settings pages, without giving anyone direct access to your dashboard.
  * Author: Senff
- * Version: 1.0.3
+ * Version: 1.0.5
  * Author URI: https://www.senff.com/
  * Text Domain: admin-screenshots
+ * License: GPLv3
+ * License URI: https://www.gnu.org/licenses/gpl-3.0.html
+ * 
  */
 
 defined('ABSPATH') or die('INSERT COIN');
 
+
 /* --- ADD THE .CSS AND .JS TO ADMIN AREA -------------------------------------------------------------- */
 if (!function_exists('admin_screenshots_styles')) {
     function admin_screenshots_styles() {
-        wp_register_style('adminScreenshotsStyle', plugins_url('/assets/css/admin-screenshots.css', __FILE__) );
+        wp_register_style('adminScreenshotsStyle', plugins_url('/assets/css/admin-screenshots.css', __FILE__),'', '1.0.5' );
         wp_enqueue_style('adminScreenshotsStyle');  
 
-        wp_register_script('admin-screenshots-library', plugin_dir_url( __FILE__ ) . 'assets/js/html2canvas.min.js', array( 'jquery' ), '1.0.0', true );
+        wp_register_script('admin-screenshots-library', plugin_dir_url( __FILE__ ) . 'assets/js/html2canvas.min.js', array( 'jquery' ), '1.0.5', true );
         wp_enqueue_script('admin-screenshots-library');
 
-        wp_register_script('admin-screenshots-script', plugin_dir_url( __FILE__ ) . 'assets/js/admin-screenshots.js', array( 'jquery' ), '1.0.0', true );
+        wp_register_script('admin-screenshots-script', plugin_dir_url( __FILE__ ) . 'assets/js/admin-screenshots.js', array( 'jquery' ), '1.0.5', true );
         wp_enqueue_script('admin-screenshots-script');
     }
 }
@@ -35,7 +39,7 @@ add_action('admin_enqueue_scripts', 'admin_screenshots_styles' );
 /* --- ADD .CSS TO FRONT AREA -------------------------------------------------------------- */
 if (!function_exists('admin_screenshots_front_styles')) {
     function admin_screenshots_front_styles() {
-        wp_register_style('adminScreenshotsFrontStyle', plugins_url('/assets/css/admin-screenshots-front.css', __FILE__) );
+        wp_register_style('adminScreenshotsFrontStyle', plugins_url('/assets/css/admin-screenshots-front.css', __FILE__),'', '1.0.5' );
         wp_enqueue_style('adminScreenshotsFrontStyle');  
     }
 }
@@ -62,7 +66,21 @@ add_action('admin_bar_menu', 'admin_screenshots_toolbar_button', 999);
 
 /* --- THE FUNCTION THAT CREATES A CANVAS AND SAVES IT AS AN IMAGE -------------------------------------------------------------- */
 if (!function_exists('admin_screenshots_save_canvas')) {
+
     function admin_screenshots_save_canvas() {
+
+        if ( ! function_exists( 'request_filesystem_credentials' ) ) {
+            require_once ABSPATH . 'wp-admin/includes/file.php';
+        }
+
+        $credentials = request_filesystem_credentials( site_url() );
+
+        if ( ! WP_Filesystem( $credentials ) ) {
+            wp_die( esc_html(__( 'Could not initialize filesystem API', 'admin-screenshots' ) ) );
+        }
+
+        global $wp_filesystem;
+
         if ( isset( $_POST['image'] ) ) {
             
             $upload_dir = wp_upload_dir();              // Array
@@ -75,12 +93,14 @@ if (!function_exists('admin_screenshots_save_canvas')) {
                 wp_mkdir_p($upload_path);
             }
 
-            $image_data = sanitize_text_field($_POST['image']);
+            $image_data = sanitize_text_field(wp_unslash($_POST['image']));
             $timestamp = time();
             $img = $timestamp . '.png';
             $file = $upload_path . '/' . $img;
             $fullpath = $upload_dir['url'] . '/admin-screenshots/' . $img;
-            $success = file_put_contents( $file, base64_decode( str_replace( 'data:image/png;base64,', '', $image_data ) ) );
+//          $success = file_put_contents( $file, base64_decode( str_replace( 'data:image/png;base64,', '', $image_data ) ) );  
+//          Previous line is old, outdated version. Never version follows.
+            $success = $wp_filesystem->put_contents( $file, base64_decode( str_replace( 'data:image/png;base64,', '', $image_data ) ), FS_CHMOD_FILE );
             if ( $success ) {
                 $wp_filetype = wp_check_filetype( $img, null );
                 $attachment = array(
@@ -93,13 +113,14 @@ if (!function_exists('admin_screenshots_save_canvas')) {
                 require_once( ABSPATH . 'wp-admin/includes/image.php' );
                 $attachment_data = wp_generate_attachment_metadata( $attachment_id, $file );
                 wp_update_attachment_metadata( $attachment_id, $attachment_data );
-                echo $upload_dir_url . ',' . $timestamp;  // Sending this to the JS function in screenshotThis()
+                echo esc_attr($upload_dir_url) . ',' . esc_attr($timestamp);  // Sending this to the JS function in screenshotThis()
             } else {
-                _e('Failed to save image.', 'admin-screenshots');
+                esc_html_e('Failed to save image.','admin-screenshots'); 
             }
         }
         wp_die();
     }
 }
+
 add_action( 'wp_ajax_save_canvas', 'admin_screenshots_save_canvas' );
 add_action( 'wp_ajax_nopriv_save_canvas', 'admin_screenshots_save_canvas' );

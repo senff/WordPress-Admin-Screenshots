@@ -2,14 +2,14 @@
 Contributors: senff
 Donate link: https://donate.senff.com
 Tags: screenshot, share, debug, admin
-Plugin URI: http://www.senff.com
+Plugin URI: https://wordpress.org/plugins/admin-screenshots/
 Requires at least: 5.0
-Tested up to: 6.1.1
-Stable tag: 1.0.3
+Tested up to: 6.7
+Stable tag: 1.0.5
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
-Want to take a screenshot of any page in your admin Dashboard and share it with someone else? It couldn't be easier with Admin Screenshots for WordPress.
+Want to take a screenshot of any page in your admin Dashboard and share it with someone else? It couldn't be easier with Admin Screenshots!
 
 == Description ==
 
@@ -68,6 +68,12 @@ It's very possible, or even likely, that something's not right; I can only do so
 
 == Changelog ==
 
+= 1.0.5 =
+* Adjusted some code to better adhere to plugin standards.
+
+= 1.0.4 =
+* Fix for a bug in HTML2CANVAS library that rendered text with wrong spacing: https://github.com/niklasvh/html2canvas/issues/3037
+
 = 1.0.3 =
 * Small bugfixes, typos, cleanup
 
@@ -76,6 +82,12 @@ It's very possible, or even likely, that something's not right; I can only do so
 
 
 == Upgrade Notice ==
+
+= 1.0.5 =
+* Code updates
+
+= 1.0.4 =
+* Minor bugfix
 
 = 1.0.3 =
 * Pre-release fixes
